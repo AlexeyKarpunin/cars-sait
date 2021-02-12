@@ -135,6 +135,11 @@ const HeaderGeoInfo = styled.div`
       align-self: flex-end;
       padding: 0 0 5px 0;
 
+      @-moz-document url-prefix()
+      {
+          padding: 0 0 25px 0;
+      }
+      
       span {
         font-style: normal;
         font-weight: bold;
