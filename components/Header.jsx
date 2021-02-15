@@ -7,9 +7,9 @@ export default function Header () {
 
         <HeaderBanner>
           <h1>
-            Авторазбор
+            <span>Авторазбор</span>
             <br />
-            б/у запчасти
+            <span>б/у запчасти</span>
           </h1>
           <div>по минимальной цене</div>
         </HeaderBanner>
@@ -45,33 +45,40 @@ export default function Header () {
 const HeaderSection = styled.section`
   max-width: 1170px;
   margin: 0 auto;
+  padding: 20px 0 0 0;
 `;
 
 const HeaderContainer = styled.div`
   max-width: 1170px;
   margin: 0 auto; 
   display: grid;
+
   grid-template: 
-  "one two two" auto
-  "one three three" auto
-  "five five six" auto
-  "four four six" auto;
+      "one two two" 1fr
+      "one three three" 1fr
+      "four four none" 1fr
+      "five five none" 1fr;
 
+      @media (max-width: 1180px) {
+        padding: 0 10px;
+      }
 
-  @media (max-width: 1180px) {
-    padding: 0 0 0 20px;
-  }
-
-  @media (max-width: 310px) {
-    padding: 0;
-  }
-
+      @media (max-width: 710px) {
+        grid-template: 
+      "one" 1fr
+      "one" 1fr
+      "four" 1fr
+      "five" 1fr;
+      }
 `;
 
 const HeaderBanner = styled.div`
-  grid-area: one;
   max-width: 334px;
+  grid-area: one;
+
   h1 {
+    margin: 0;
+
     font-style: normal;
     font-weight: 900;
     font-size: 44.8837px;
@@ -79,6 +86,10 @@ const HeaderBanner = styled.div`
     letter-spacing: 0.02em;
     text-transform: uppercase;
     color: #242424;
+    
+    span {
+      white-space: nowrap;
+    }  
   }
 
   div {
@@ -95,7 +106,9 @@ const HeaderBanner = styled.div`
     white-space: nowrap;
   }
 
-  @media (max-width: 385px) {
+  @media (max-width: 350px) {
+    max-width: 270px;
+
     h1 {
       font-size: 36px;
     }
@@ -107,18 +120,15 @@ const HeaderBanner = styled.div`
 `;
 
 const HeaderGeoInfo = styled.div`
-  width: 605px;
-  display: flex;
   grid-area: two;
+  display: flex;
   justify-self: end;
+  width: 605px;
   justify-content: space-between;
 
   div {
-    align-self: center;
-    display: flex;
 
     &:nth-child(1){
-
       span {
         font-style: normal;
         font-weight: bold;
@@ -126,74 +136,59 @@ const HeaderGeoInfo = styled.div`
         line-height: 21px;
         color: #000000;
       }
-
     }
 
     &:nth-child(2) {
-      display: flex;
-      flex-direction: column;
-      align-self: flex-end;
-      padding: 0 0 5px 0;
-
-      div {
-        @-moz-document url-prefix()
-        {
-            margin-bottom: 19px;
-        }
-      }
-
       span {
         font-style: normal;
         font-weight: bold;
         font-size: 24px;
         line-height: 28px;
         color: #000000;
-        margin-top: -5px;
+        float: right;
       }
     }
 
-    span {
-      align-self: flex-end;
-      margin-left: 17px;
-    }
+  }
+
+  img {
+    margin-right: 17px;
   }
 
   @media (max-width: 1180px) {
-    flex-direction: column;
     justify-self: start;
-    padding: 45px 0 0 40px;
-    max-width: 350px;
+    flex-direction: column;
+    padding: 0 0 0 20px;
+    width: 280px;
 
     div {
-      align-self: auto;
-
       &:nth-child(2) {
-        align-self: auto;
-        padding: 45px 0 0 0;
+        margin-top: 10px;
+
         span {
-          align-self: auto;
+          float: initial;
         }
       }
     }
   }
 
-  @media (max-width: 728px) {
-    grid-area: five;
+  @media (max-width: 710px) {
+    grid-area: four;
+    margin-top: -10px;
   }
 
-  @media (max-width: 385px) {
-    padding: 45px 0 0 0 ;
-    max-width: 280px;
+  @media (max-width: 350px) {
+    padding: 0;
   }
 `;
 
 const HeaderSearch = styled.div`
+  grid-area: three;
+  justify-self: end;
   width: 690px;
   display: flex;
   justify-content: space-between;
-  grid-area: three;
   align-self: end;
-  justify-self: end;
 
   input {
     max-width: 490px;
@@ -205,7 +200,6 @@ const HeaderSearch = styled.div`
     line-height: 19px;
     text-transform: uppercase;
     padding: 20px 0 20px 28px;
-
     &::placeholder {
       font-style: normal;
       font-weight: 500;
@@ -216,7 +210,6 @@ const HeaderSearch = styled.div`
       padding: 20px 0 20px 0px;
     }
   }
-
   button {
     max-width: 189px;
     padding: 20px 67px;
@@ -230,7 +223,6 @@ const HeaderSearch = styled.div`
     text-transform: uppercase;
     color: #FFFFFF;
   }
-
   button:hover {
     cursor: pointer;
   }
@@ -238,33 +230,28 @@ const HeaderSearch = styled.div`
   @media (max-width: 1180px) {
     grid-area: four;
     justify-self: start;
-    padding: 20px 0;
+    align-self: start;
   }
 
-  @media (max-width: 728px) {
-    max-width: 334px
-  }
+  @media (max-width: 710px) {
+    grid-area: five;
+    align-self: end;
+    width: 334px;
 
-  @media (max-width: 467px) {
     button {
       padding: 20px 20px;
     }
   }
 
-  @media (max-width: 385px) {
-    max-width: 280px;
-    input {
-      max-width: 190px;
-    }
-  }
+  @media (max-width: 350px) {
+    width: 270px;
 
-  @media (max-width: 310px) {
+    input {
+      max-width: 200px;
+    }
+
     button {
-      font-size: 12px;
-    }
-
-    input {
-      max-width: 195px;
+      padding: 10px 10px;
     }
   }
 `;

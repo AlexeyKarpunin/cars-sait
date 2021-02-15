@@ -8,7 +8,7 @@ export default function Home() {
     <>
       <Head />
       <Header />
-      <Ask />
+      <Ask /> 
       <Goods />
     </>
   )
