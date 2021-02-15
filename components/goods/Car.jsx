@@ -7,19 +7,26 @@ export default function Car ({carInfo}) {
       <CarContainer>
         <CarInfo>
           <img src={imgLink} alt='foto' />
-          <CarDiscription>
-            <h3>{title}</h3>
-            <p>{discription}</p>
-            <div>
-              {price}
-              <br />
-              {' '}
-              <span>подробнее</span>
-            </div>
-          </CarDiscription>
-          <ButtonWrapper>
-            <button type='button'>в корзину</button>
-          </ButtonWrapper>
+
+          <CarContentWrapper>
+            
+            <CarDiscription>
+              <h3>{title}</h3>
+              <p>{discription}</p>
+            </CarDiscription>
+
+            <CarPrice>
+              <div>
+                {price}
+                <br />
+                {' '}
+                <span>подробнее</span>
+              </div>
+              <ButtonWrapper>
+                <button type='button'>в корзину</button>
+              </ButtonWrapper>
+            </CarPrice>
+          </CarContentWrapper>
         </CarInfo>
       </CarContainer>
     </>
@@ -45,11 +52,12 @@ const CarInfo = styled.div`
 `;
 
 const CarDiscription = styled.div`
-  max-width: 208px;
   margin: 0 45px;
   position: relative;
+  
   h3 {
     margin-top: 0;
+    text-align: center;
     text-transform: uppercase;
   }
 
@@ -61,31 +69,6 @@ const CarDiscription = styled.div`
     color: #767070;
   }
 
-  div {
-    font-style: normal;
-    font-weight: bold;
-    font-size: 30px;
-    line-height: 35px;
-    text-transform: uppercase;
-    text-align: end;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-
-    span {
-      font-style: normal;
-      font-weight: bold;
-      font-size: 18px;
-      line-height: 21px;
-      text-transform: uppercase;
-      color: #000000;
-    }
-
-    span:hover {
-      cursor: pointer;
-    }
-  }
-
   @media (max-width: 875px) {
     min-height: 200px;
     margin-top: 15px;
@@ -94,6 +77,56 @@ const CarDiscription = styled.div`
   @media (max-width: 330px) {
     margin: 10px auto;
   }
+`;
+
+const CarPrice = styled.div`
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+  span {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    text-transform: uppercase;
+    color: #000000;
+  }
+
+  span:hover {
+    cursor: pointer;
+  }
+
+  div {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 35px;
+    text-transform: uppercase;
+    text-align: end;
+
+    &:nth-child(1) {
+      margin-right: 95px;
+    }
+  }
+
+  @media (max-width: 485px) {
+    position: initial;
+    flex-direction: column; 
+
+    div {
+      &:nth-child(1) {
+        margin: 0 auto;
+      }
+    }
+  }
+`;
+
+const CarContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
 `;
 
 const ButtonWrapper = styled.div`

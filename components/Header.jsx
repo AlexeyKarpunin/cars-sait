@@ -55,12 +55,15 @@ const HeaderContainer = styled.div`
 
   grid-template: 
       "one two two" 1fr
-      "one three three" 1fr
-      "four four none" 1fr
-      "five five none" 1fr;
+      "one three three" 1fr;
 
       @media (max-width: 1180px) {
         padding: 0 10px;
+
+        grid-template: 
+        "one two two" 1fr
+        "one three three" 1fr
+        "four four none" 1fr;
       }
 
       @media (max-width: 710px) {
