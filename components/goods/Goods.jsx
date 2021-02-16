@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import styled from 'styled-components';
 import Categoties from './Categories';
 import Car from './Car';
@@ -25,17 +26,23 @@ export default function Goods() {
 
   useEffect (()=> {
     function changeScroll () {
-      if (window.scrollY > 609) {
-        setScroll(false)
-      } else {
+      const scrollNow = window.scrollY;
+      const heightBody = document.querySelector('body').scrollHeight;
+      const userheight = window.screen.height;
+      const footer = document.querySelector('footer').scrollHeight;
+      if ( (userheight + Math.ceil(scrollNow + footer) >= heightBody)) {
         setScroll(true)
+        return;
       }
+      scrollNow > 609 ? setScroll(false) : setScroll(true);
+
     }
     document.addEventListener('scroll', changeScroll);
     return () => document.removeEventListener('scroll', changeScroll);
   }, [])
 
   function toggleMenu() {
+    if (scrollStatus) return;
     menuStatus ? setMenuStatus(false) : setMenuStatus(true);
   }
 
